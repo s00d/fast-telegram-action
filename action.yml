@@ -12,10 +12,6 @@ inputs:
   to:
     description: 'Telegram chat ID or group ID'
     required: true
-  message:
-    description: 'Message text (supports Markdown)'
-    required: true
-    default: 'Hello from GitHub Actions!'
   format:
     description: 'Markdown or MarkdownV2 or HTML'
     required: false
@@ -23,6 +19,10 @@ inputs:
   disable_web_page_preview:
     description: 'Disable web page preview in the Telegram message (set to "True" to disable)'
     required: false
+  message:
+    description: 'Message text (supports Markdown)'
+    required: true
+    default: 'Hello from GitHub Actions!'
 
 runs:
   using: 'composite'
@@ -32,9 +32,9 @@ runs:
       env:
         TELEGRAM_TOKEN: ${{ inputs.token }}
         TELEGRAM_TO: ${{ inputs.to }}
-        MESSAGE_TEXT: ${{ inputs.message }}
         DISABLE_WEB_PAGE_PREVIEW: ${{ inputs.disable_web_page_preview }}
         PARSE_MODE: ${{ env.format }}
+        MESSAGE_TEXT: ${{ inputs.message }}
       run: |
         curl -s -X POST https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage \
           -d chat_id=${TELEGRAM_TO} \
