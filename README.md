@@ -1,6 +1,6 @@
 # Send Telegram Message GitHub Action
 
-This GitHub Action allows you to send a message to Telegram using a Bash script. It can be useful for sending notifications or alerts from your workflows.
+This [GitHub Action](https://github.com/marketplace/actions/fast-telegram-action) allows you to send a message to Telegram using a Bash script. It can be useful for sending notifications or alerts from your workflows.
 
 ## Inputs
 
