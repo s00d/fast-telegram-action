@@ -14,8 +14,6 @@ This [GitHub Action](https://github.com/marketplace/actions/fast-telegram-action
 - `sticker` - (optional): sticker message
 - `audio` - (optional): audio message
 - `voice` - (optional): voice message
-- `location` - (optional): location message
-- `venue` - (optional): venue message
 - `video` - (optional): video message
 
 ## Example Usage
@@ -33,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Telegram Message
-        uses: s00d/fast-telegram-action@v3
+        uses: s00d/fast-telegram-action@v4
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: ${{ secrets.TELEGRAM_TO }}

@@ -64,8 +64,6 @@ runs:
         STICKER: ${{ inputs.sticker }}
         AUDIO: ${{ inputs.audio }}
         VOICE: ${{ inputs.voice }}
-        LOCATION: ${{ inputs.location }}
-        VENUE: ${{ inputs.venue }}
         VIDEO: ${{ inputs.video }}
       run: |
         curl -s -X POST https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage \
@@ -79,6 +77,4 @@ runs:
           ${STICKER:+-F sticker="@${STICKER}"} \
           ${AUDIO:+-F audio="@${AUDIO}"} \
           ${VOICE:+-F voice="@${VOICE}"} \
-          ${LOCATION:+-F latitude=${LOCATION.latitude} -F longitude=${LOCATION.longitude}} \
-          ${VENUE:+-F latitude=${VENUE.latitude} -F longitude=${VENUE.longitude} -F title="${VENUE.title}" -F address="${VENUE.address}"} \
           ${VIDEO:+-F video="@${VIDEO}"}
