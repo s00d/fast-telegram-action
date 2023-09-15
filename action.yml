@@ -21,6 +21,7 @@ runs:
   using: 'composite'
   steps:
     - name: Send Telegram message
+      shell: bash
       env:
         TELEGRAM_TOKEN: ${{ inputs.token }}
         TELEGRAM_TO: ${{ inputs.to }}
