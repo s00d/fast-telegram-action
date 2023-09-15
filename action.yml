@@ -17,10 +17,10 @@ inputs:
     required: true
     default: 'Hello from GitHub Actions!'
   format:
-    description: 'markdown or html'
+    description: 'Markdown or MarkdownV2 or HTML'
     required: false
-    default: 'markdown'
-  disable_web_page_preview: # Add the disable-web-page-preview input
+    default: 'Markdown'
+  disable_web_page_preview:
     description: 'Disable web page preview in the Telegram message (set to "True" to disable)'
     required: false
 
