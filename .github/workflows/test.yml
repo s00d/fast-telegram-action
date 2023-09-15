@@ -10,16 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Telegram Message
-        uses: s00d/fast-telegram-action@v5
+        uses: s00d/fast-telegram-action@v6
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: ${{ secrets.TELEGRAM_TO }}
           message: |
+            ℹ️ * UPDATED *
             ${{ github.actor }} created commit:
             Commit message: ${{ github.event.commits[0].message }}
 
             Repository: ${{ github.repository }}
 
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          format: markdown
+          format: Markdown
           disable_web_page_preview: "True"
