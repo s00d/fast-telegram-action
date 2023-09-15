@@ -23,30 +23,6 @@ inputs:
   disable_web_page_preview: # Add the disable-web-page-preview input
     description: 'Disable web page preview in the Telegram message (set to "True" to disable)'
     required: false
-  photo:
-    description: 'Photo message'
-    required: false
-  document:
-    description: 'Document message'
-    required: false
-  sticker:
-    description: 'Sticker message'
-    required: false
-  audio:
-    description: 'Audio message'
-    required: false
-  voice:
-    description: 'Voice message'
-    required: false
-  location:
-    description: 'Location message'
-    required: false
-  venue:
-    description: 'Venue message'
-    required: false
-  video:
-    description: 'Video message'
-    required: false
 
 runs:
   using: 'composite'
@@ -59,22 +35,9 @@ runs:
         MESSAGE_TEXT: ${{ inputs.message }}
         DISABLE_WEB_PAGE_PREVIEW: ${{ inputs.disable_web_page_preview }}
         PARSE_MODE: ${{ env.format }}
-        PHOTO: ${{ inputs.photo }}
-        DOCUMENT: ${{ inputs.document }}
-        STICKER: ${{ inputs.sticker }}
-        AUDIO: ${{ inputs.audio }}
-        VOICE: ${{ inputs.voice }}
-        VIDEO: ${{ inputs.video }}
       run: |
         curl -s -X POST https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage \
           -d chat_id=${TELEGRAM_TO} \
           -d text="${MESSAGE_TEXT}" \
           -d parse_mode=${PARSE_MODE} \
-          -d disable_web_page_preview=${DISABLE_WEB_PAGE_PREVIEW} \
-          ${SOCKS5:+-x ${SOCKS5}} \
-          ${PHOTO:+-F photo="@${PHOTO}"} \
-          ${DOCUMENT:+-F document="@${DOCUMENT}"} \
-          ${STICKER:+-F sticker="@${STICKER}"} \
-          ${AUDIO:+-F audio="@${AUDIO}"} \
-          ${VOICE:+-F voice="@${VOICE}"} \
-          ${VIDEO:+-F video="@${VIDEO}"}
+          -d disable_web_page_preview=${DISABLE_WEB_PAGE_PREVIEW}
