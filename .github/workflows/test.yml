@@ -14,6 +14,8 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: ${{ secrets.TELEGRAM_TO }}
+          format: Markdown
+          disable_web_page_preview: "True"
           message: |
             ℹ️ * UPDATED *
             ${{ github.actor }} created commit:
@@ -22,5 +24,3 @@ jobs:
             Repository: ${{ github.repository }}
 
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          format: Markdown
-          disable_web_page_preview: "True"
