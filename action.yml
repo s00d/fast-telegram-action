@@ -1,0 +1,29 @@
+name: 'Fast Telegram Action'
+description: 'Sends a message to Telegram using a Bash script'
+author: 's00d'
+branding:
+  icon: 'message-square'
+  color: 'purple'
+
+inputs:
+  token:
+    description: 'Telegram Bot API token'
+    required: true
+  to:
+    description: 'Telegram chat ID or group ID'
+    required: true
+  message:
+    description: 'Message text (supports Markdown)'
+    required: true
+    default: 'Hello from GitHub Actions!'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Send Telegram message
+      env:
+        TELEGRAM_TOKEN: ${{ inputs.token }}
+        TELEGRAM_TO: ${{ inputs.to }}
+        MESSAGE_TEXT: ${{ inputs.message }}
+      run: |
+        curl -s -X POST https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage -d chat_id=${TELEGRAM_TO} -d text="${MESSAGE_TEXT}" -d parse_mode=Markdown
