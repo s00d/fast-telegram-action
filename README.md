@@ -7,6 +7,8 @@ This [GitHub Action](https://github.com/marketplace/actions/fast-telegram-action
 - `token` (required): The Telegram Bot API token.
 - `to` (required): The Telegram chat ID or group ID.
 - `message` (required): The message text to be sent (supports Markdown). The default value is "Hello from GitHub Actions!".
+- `format` (optional): markdown or html. default is markdown.
+- `disable_web_page_preview` (optional): disables notifications for this message, supports sending a message without notification. default is false.
 
 ## Example Usage
 
