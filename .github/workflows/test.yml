@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Telegram Message
-        uses: s00d/fast-telegram-action@v4
+        uses: s00d/fast-telegram-action@v5
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: ${{ secrets.TELEGRAM_TO }}
@@ -21,6 +21,5 @@ jobs:
             Repository: ${{ github.repository }}
 
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          photo: 'https://github.com/s00d/fast-telegram-action/blob/main/tests/github.png?raw=true'
           format: markdown
           disable_web_page_preview: "True"
